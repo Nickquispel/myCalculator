@@ -5,6 +5,8 @@
  */
 package Calculator;
 
+import java.io.IOException;
+
 /**
  *
  * @author bignick
@@ -73,5 +75,14 @@ public class Calculator {
     public String getString2 () {
         return string;
     }
-   
+ 
+    
+    public static void openWebpage(String url) {
+    try {
+        new ProcessBuilder("x-www-browser", url).start();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+    
 }

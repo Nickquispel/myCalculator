@@ -5,11 +5,9 @@
  */
 package Calculator;
 
-import java.awt.Desktop;
-import java.io.IOException;
-import static java.lang.Math.log;
-import java.net.URI;
-import java.net.URISyntaxException;
+import static Calculator.Calculator.openWebpage;
+import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
+import com.sun.javafx.application.HostServicesDelegate;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -22,27 +20,60 @@ import javafx.scene.image.ImageView;
 /**
  *
  * @author bignick
+ * @version 1.0
+ * De klasse Eventhandler vericht alle methoden en acties. Daarnaast zijn alle variabelen hier gedeclareert.
+ * @see Calculator
+ * @see PrimaryStage
+ * 
  */
 public class EventHandler {
+    
+/**    
+ * Declaratie van referenties
+ * @param v1 Tekstvak die getallen toont
+ * @param b1 t/m b16 Knoppen voor het intoetsen van getallen van de rekenmachine
+ * @param Calculator Business Logic klasse die de getallen onthoud
+ */
+    
+ 
     private  TextField v1;
     private final Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16;
     private final Calculator Calculator;
+    
+
+    /**
+     *@param i1 
+     */
     public Image i1;
+
+    /**
+     *@param img1 
+     */
     public ImageView img1;
+
+    /**
+     *@param hp1
+     */
     public Hyperlink hp1;
     
-    
-    
+    /**
+     *
+     * @param p
+     */
     public EventHandler (GridPane p) {
-
+        
+       /**
+        * @param v1 Constructor van de tekstvak
+        */ 
       
        v1 = new TextField ();
        v1.setAlignment(Pos.CENTER_LEFT);
        v1.setEditable(false);
        
-       
-       
-       
+       /**
+        * @param b1 t/m b16 Constructor van de knoppen
+       */ 
+              
        b1 = new Button ("0");
        b2 = new Button ("C");
        b3 = new Button ("=");
@@ -60,7 +91,27 @@ public class EventHandler {
        b15 = new Button ("9");
        b16 = new Button ("/");
        
+    b1.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    b2.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    b3.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    b4.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    b5.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    b6.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    b7.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    b8.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    b9.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    b10.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    b11.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    b12.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    b13.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    b14.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    b15.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    b16.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+    
        
+       /**
+        * @param i1 Constructor van de afbeelding en de hyperlink (hp1)
+        */
        
        i1 = new Image("https://www.stadsringarnhem.nl/wp-content/uploads/2014/05/Internet-IPv6-1000x650.jpg");
        img1 = new ImageView(i1);
@@ -70,12 +121,16 @@ public class EventHandler {
        hp1 = new Hyperlink();
        hp1.setGraphic(img1);
        
+       /**
+        * @param Constructor van de business logic klasse
+        */
+       
        Calculator = new Calculator();
        
           
-       p.setVgap(10);
-       p.setHgap(10);
-       p.setPadding(new Insets(10,10,10,10));
+      /**
+       * @param Lambda functies van de knoppen
+       */
   
        
       
@@ -209,36 +264,19 @@ public class EventHandler {
       });
        
        hp1.setOnAction(event->{
-       hp1.setText("www.google.com");
-       try{
-           Desktop.getDesktop().browse(new URI("www.google.com"));
-       }catch (IOException | URISyntaxException e){
-       e.printStackTrace();
-    }
+       openWebpage("www.google.com");
        
-       
+           
        });
        
        
+      /**
+       * @param p Gridpane constructor
+       */ 
        
-       
-    
-    b1.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
-    b2.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
-    b3.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
-    b4.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
-    b5.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
-    b6.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
-    b7.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
-    b8.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
-    b9.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
-    b10.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
-    b11.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
-    b12.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
-    b13.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
-    b14.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
-    b15.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
-    b16.setMaxSize(Double.MAX_VALUE, Double.MIN_VALUE);
+     p.setVgap(10);
+     p.setHgap(10);
+     p.setPadding(new Insets(10,10,10,10));
     
     
     p.setAlignment(Pos.BASELINE_CENTER);
